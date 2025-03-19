@@ -1,5 +1,5 @@
-@import "./styles/App.css";
-@import "./styles/base/_global.css";
+@import "./styles/_global.css";
 
-@import "./styles/LoginPage.css";
-@import "./styles/Header.css";
+@import "./styles/Page/LoginPage.css";
+
+@import "./styles/Components/Header.css";
