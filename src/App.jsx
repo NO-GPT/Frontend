@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Components/Header/Header.jsx';
+import Header from './Components/Header.jsx';
 import { MainPage, MyPage, PortfolioPage, LoginPage, SignupPage } from './Pages';
-import './App.css'
+import "./index.css";
 
 
 const App = () => {
