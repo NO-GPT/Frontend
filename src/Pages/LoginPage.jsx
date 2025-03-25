@@ -41,7 +41,7 @@ const LoginPage = () => {
           <button className="login-btn">로그인</button>
 
           <p className="signup-link">
-            계정이 아직 없으신가요? <Link to="/signup" className="signup-btn">회원가입</Link>
+            계정이 아직 없으신가요? <Link to="/signup" className="signup-movement-btn">회원가입</Link>
           </p>
         </div>
       </div>
