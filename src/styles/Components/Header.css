@@ -4,13 +4,12 @@
  display: flex;
  align-items: center;
  justify-content: space-between;
- padding: 20px 20px 22px 20px;
- border-bottom: 1px solid #ccc;
+ padding: 20px 25px 22px 25px;
  font-family: 'Paperlogy-7Bold', sans-serif;
 }
 
 .logo span {
- font-size: 22px;
+ font-size: 18px;
  font-weight: bold;
 }
 
@@ -21,7 +20,7 @@
 }
 
 .nav-item {
- font-size: 15px;
+ font-size: 13px;
  text-decoration: none;
  color: inherit;
 }

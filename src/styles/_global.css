@@ -15,5 +15,15 @@ code {
 .content {
   background-color: #F1F1F5;
   min-height: calc(100vh - 60px);
-  padding: 20px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+*{
+  font-family: 'Paperlogy-5Medium', sans-serif;
 }
