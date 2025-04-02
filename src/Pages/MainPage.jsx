@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../index.css';
 
-// 포트폴리오 예시 데이터 작성
+// 포트폴리오 예시 데이터 작성 코드
 const portfolioItems = Array.from({ length: 201 }, (_, i) => ({
   id: i + 1,
   title: `포트폴리오 ${i + 1}`,
@@ -14,11 +14,14 @@ const portfolioItems = Array.from({ length: 201 }, (_, i) => ({
 const MainPage = () => {
   const navigate = useNavigate();
 
-  // 페이지 관리 스테이터스
+  // 현재 페이지 관리 스테이터스
   const [currentPage, setCurrentPage] = useState(1);
+  // 페이지 최대 사이즈
   const pageSize = 50;
+  // 전체 페이지 갯수
   const totalPages = Math.ceil(portfolioItems.length / pageSize);
 
+  // 현재 페이지 해당하는 포트폴리오만 로딩
   const displayedItems = portfolioItems.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -40,7 +43,6 @@ const MainPage = () => {
       
         const imgHeight = img.getBoundingClientRect().height;
         const rowSpan = Math.ceil((imgHeight + columnGap) / autoRows);
-        
         item.style.gridRowEnd = `span ${rowSpan}`;
       });
     };

@@ -22,16 +22,16 @@ html, body {
   font-family: 'Paperlogy-5Medium', sans-serif;
 }
 
-.content {
-  background-color: #ffffff;
-  flex: 1;
-  overflow-y: auto;
-}
-
-.main-container {
+.container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+.main-content {
+  background-color: #ffffff;
+  flex: 1;
+  overflow-y: auto;
 }
 
 img {

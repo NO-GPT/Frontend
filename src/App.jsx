@@ -8,9 +8,9 @@ import "./index.css";
 const App = () => {
   return (
     <Router>
-    <div className='main-container'>
+    <div className='container'>
     <Header />
-      <div className='content'>
+      <div className='main-content'>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/mypage" element={<MyPage />} />
