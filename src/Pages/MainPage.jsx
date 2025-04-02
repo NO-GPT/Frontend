@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { masonryLayout } from '../utils';
 import '../index.css';
 
 // 포트폴리오 예시 데이터 작성 코드
@@ -29,23 +30,6 @@ const MainPage = () => {
 
   // 포트폴리오 크기를 계산하여 적당한 위치에 정렬 하는 코드
   useEffect(() => {
-    const masonryLayout = () => {
-      const container = document.querySelector(".mp-portfolio-container");
-      if (!container) return;
-
-      const style = getComputedStyle(container);
-      const autoRows = parseInt(style.getPropertyValue("grid-auto-rows"), 10) || 20;
-      const columnGap = parseInt(style.getPropertyValue("column-gap"), 10);
-
-      document.querySelectorAll(".mp-portfolio-item").forEach((item) => {
-        const img = item.querySelector(".mp-portfolio-img img");
-        if (!img) return;
-      
-        const imgHeight = img.getBoundingClientRect().height;
-        const rowSpan = Math.ceil((imgHeight + columnGap) / autoRows);
-        item.style.gridRowEnd = `span ${rowSpan}`;
-      });
-    };
     masonryLayout();
     window.addEventListener("resize", masonryLayout);
     return () => window.removeEventListener("resize", masonryLayout);
