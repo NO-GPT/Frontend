@@ -1,56 +1,125 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../index.css';
 
-const portfolioItems = [
-  { id: 1, title: '포트폴리오 A', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 2, title: '포트폴리오 B', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 3, title: '포트폴리오 C', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 4, title: '포트폴리오 D', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 5, title: '포트폴리오 E', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 6, title: '포트폴리오 F', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 7, title: '포트폴리오 G', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 8, title: '포트폴리오 H', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 9, title: '포트폴리오 I', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 10, title: '포트폴리오 J', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 11, title: '포트폴리오 K', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-  { id: 12, title: '포트폴리오 L', img: '/assets/imgs/LoginPage_img.png', likes: 3283 },
-];
+// 포트폴리오 예시 데이터 작성
+const portfolioItems = Array.from({ length: 201 }, (_, i) => ({
+  id: i + 1,
+  title: `포트폴리오 ${i + 1}`,
+  img: `/assets/imgs/test/${(i % 9) + 1}.png`,
+  likes: Math.floor(Math.random() * 5000) + 100,
+  height: [250, 300, 350, 400, 450][i % 5]
+}));
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
+  // 페이지 관리 스테이터스
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 50;
+  const totalPages = Math.ceil(portfolioItems.length / pageSize);
+
+  const displayedItems = portfolioItems.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
+  // 포트폴리오 크기를 계산하여 적당한 위치에 정렬 하는 코드
+  useEffect(() => {
+    const masonryLayout = () => {
+      const container = document.querySelector(".mp-portfolio-container");
+      if (!container) return;
+
+      const style = getComputedStyle(container);
+      const autoRows = parseInt(style.getPropertyValue("grid-auto-rows"), 10) || 20;
+      const columnGap = parseInt(style.getPropertyValue("column-gap"), 10);
+
+      document.querySelectorAll(".mp-portfolio-item").forEach((item) => {
+        const img = item.querySelector(".mp-portfolio-img img");
+        if (!img) return;
+      
+        const imgHeight = img.getBoundingClientRect().height;
+        const rowSpan = Math.ceil((imgHeight + columnGap) / autoRows);
+        
+        item.style.gridRowEnd = `span ${rowSpan}`;
+      });
+    };
+    masonryLayout();
+    window.addEventListener("resize", masonryLayout);
+    return () => window.removeEventListener("resize", masonryLayout);
+  }, [displayedItems]); // 페이지 이동시 로딩
+
+  // 시작하기 버튼
+  const handleStartClick = () => {
+    navigate("/portfolio");
+  };
+
+  // 포트폴리오 클릭시 상세 페이지로 이동
+  const handlePortfolioClick = () => {
+    navigate("/portfolioDetail");
+  };
+
+  // 이전 페이지
+  const handlePrevPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
+  };
+
+  // 다음 페이지
+  const handleNextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+  };
+
+  // ClassName의 앞부분 mp는 mainPage를 뜻함.
   return (
     <>
+      {/* 대표 이미지 컨테이너 */}
       <div className="mp-hero-container">
         <div className="mp-hero-text">
           <div className="mp-hero-headline">
             포트폴리오 공유,<br />
             더 나은 커리어의 시작!
           </div>
-          <button className="mp-hero-button">
+          <button className="mp-hero-button" onClick={handleStartClick}>
             <span className="mp-hero-button-text">시작하기 &gt;</span>
           </button>
         </div>
-
-        <div className="mp-hero-image">
-          <img src="/assets/imgs/LoginPage_img.png" alt="이미지" />
+        {/* 대표 이미지 컨테이너의 이미지 컨테이너 */}
+        <div className="mp-hero-image-container">
+          <img className='mp-hero-image' src="/assets/imgs/LoginPage_img.png" alt="이미지" />
         </div>
       </div>
 
+      {/*  */}
       <div className="mp-container">
         <h1 className="mp-title">추천 포트폴리오</h1>
         <p className="mp-subtitle">다른 포트폴리오 구경하기</p>
+
+        {/* 페이지 이동 버튼 */}
+        <div className="">
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            이전
+          </button>
+          <span>{currentPage} / {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            다음
+          </button>
+        </div>
+
+        {/* 포트폴리오 컨테이너 */}
         <div className="mp-portfolio-container">
-          {portfolioItems.map(item => (
-            <div key={item.id} className="mp-portfolio-item">
+          {/* 예시데이터를 넣어서 화면에 표시 */}
+          {displayedItems.map(item => (
+            <div key={item.id} className="mp-portfolio-item" onClick={handlePortfolioClick}>
               <div className="mp-portfolio-like">
                 <img 
                   src="/assets/imgs/Like_img.png" 
                   alt="포트폴리오 이미지" 
                   className="mp-like-img" 
                 />
-                <span className="mp-like-count">{item.likes}</span>
+                <div className="mp-like-count">{item.likes}</div>
               </div>
               <div className="mp-portfolio-img">
-                <img className="mp-portfolio-img" src={item.img} alt={item.title} />
+                <img className="mp-portfolio-img" src={item.img} alt={item.title} style={{ height: `${item.height}px` }}/>
               </div>
               <div className="mp-portfolio-title">{item.title}</div>
             </div>
