@@ -112,11 +112,6 @@
  accent-color: #FF9B30;
 }
 
-/* 비밀번호를 잃어버리셨나요? css */
-.lp-forgot-password {
- text-align: right;
-}
-
 /* 로그인 버튼 css */
 .lp-login-btn {
  width: 100%;
