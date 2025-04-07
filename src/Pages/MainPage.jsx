@@ -8,7 +8,7 @@ const portfolioItems = Array.from({ length: 201 }, (_, i) => ({
   id: i + 1,
   title: `포트폴리오 ${i + 1}`,
   img: `/assets/imgs/test/${(i % 9) + 1}.png`,
-  likes: Math.floor(Math.random() * 5000) + 100,
+  likes: Math.floor(Math.random() * 3000) + 100,
   height: [250, 300, 350, 400, 450][i % 5]
 }));
 
