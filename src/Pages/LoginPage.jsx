@@ -16,6 +16,7 @@ const LoginPage = () => {
     } else {
       setError({ field: "", message: "" });
       // 로그인 처리 로직
+      // 아이디 비밀번호가 틀렸을 시의 예외 처리 추가
     }
   };
 
@@ -75,13 +76,13 @@ const LoginPage = () => {
               <span className="lp-forgot-password">비밀번호를 잃어버리셨나요?</span>
             </div>
 
-            <button className="lp-btn" onClick={handleLogin}>
+            <button className="lp-login-btn" onClick={handleLogin}>
               로그인
             </button>
           </form>
 
           <p className="lp-signup-link">
-            계정이 아직 없으신가요?{" "}
+            아직 계정이 없으신가요?{" "}
             <Link to="/signup" className="lp-signup-movement-btn">
               회원가입
             </Link>
