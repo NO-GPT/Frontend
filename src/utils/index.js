@@ -1,1 +1,1 @@
-export { masonryLayout } from './masonryLayout.js';
+export { masonryLayout } from './masonryLayout';
