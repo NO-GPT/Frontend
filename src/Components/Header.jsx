@@ -11,7 +11,7 @@ const Header = () => {
       <nav className="nav-center">
         <Link to="/" className="nav-item nav-item-bold">메인페이지</Link>
         <Link to="/mypage" className="nav-item nav-item-bold">마이페이지</Link>
-        <Link to="/portfolio" className="nav-item nav-item-bold">포트폴리오</Link>
+        <Link to="/portfolio/:Page" className="nav-item nav-item-bold">포트폴리오</Link>
       </nav>
       
       <div className="nav-right">

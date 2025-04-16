@@ -17,82 +17,45 @@
   margin-bottom: 20px;
 }
 
-/* ========== 검색 영역 ========== */
+/* ========== 검색바 ========== */
 .fp-search-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
 .fp-search-input-wrapper {
   position: relative;
-  flex: 1;
 }
 
 .fp-search-input {
-  width: 500px;
+  width: 400px;
   padding: 10px 40px 10px 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  background-color: #DBDBDB;
+  border: 0;
   border-radius: 4px;
+}
+
+.fp-search-input::placeholder {
+  color: #1E1E1E80;
 }
 
 .fp-search-icon {
   position: absolute;
-  right: 10px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 18px;
-}
-
-.fp-more-icon {
-  font-size: 24px;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  z-index: 1;
   cursor: pointer;
 }
 
-/* ========== 사이드 패널 & 오버레이 ========== */
-.fp-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 100;
-}
-
-.fp-side-panel {
-  position: fixed;
-  top: 0;
-  right: -500px;
-  width: 420px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-  z-index: 101;
-  transition: right 0.3s ease;
-  padding: 20px;
-}
-
-.fp-side-panel.open {
-  right: 0;
-}
-
-.fp-side-panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.fp-side-panel-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.fp-side-panel-close {
-  font-size: 18px;
+.fp-SidePanel-icon {
+  font-size: 24px;
   cursor: pointer;
 }
 
@@ -105,9 +68,37 @@
 .fp-pagination {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 5px;
   margin-bottom: 10px;
 }
+
+.fp-pagination-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #FF9B30;
+  background: none;
+  border-radius: 3px;
+  color: #FF9B30;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+}
+
+/* 더이상 이동 불가능 페이지 일때 */
+.fp-pagination-btn:disabled {
+  color: #FF9B30AA;
+  border-color: #FF9B30AA;
+  cursor: default;
+}
+
+/* 선택 되었을때 */
+.fp-pagination-btn.active {
+  background: #FF9B30;
+  color: #fff;
+}
+
+/* ==== 포트폴리오 ==== */
 
 .fp-portfolio-container {
   --gap: 10px;
@@ -174,4 +165,50 @@
   font-size: 16px;
   color: #fff;
   z-index: 3;
+}
+
+/* ========== 사이드 패널 ========== */
+.fp-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.fp-side-panel {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 420px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  z-index: 101;
+  transition: right 0.3s ease;
+  padding: 20px;
+}
+
+.fp-side-panel.open {
+  right: 0;
+}
+
+.fp-side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fp-side-panel-title {
+  font-size: 21px;
+  font-weight: bold;
+  font-family: 'Paperlogy-3Light', sans-serif;
+}
+
+.fp-side-panel-close {
+  font-size: 32px;
+  cursor: pointer;
 }
