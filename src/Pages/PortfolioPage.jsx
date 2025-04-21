@@ -16,47 +16,65 @@ const PortfolioPage = () => {
   const navigate = useNavigate();
   const { page } = useParams();
 
-  const initialPage = parseInt(page, 10) || 1;  
-
+  const initialPage = parseInt(page, 10) || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
   const pageSize = 50;
   const totalPages = Math.ceil(portfolioItems.length / pageSize);
-
-  // 화면에 표시할 항목들 슬라이싱 (페이징 처리)
-  const displayedItems = portfolioItems.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
 
   // 검색어 상태
   const [searchText, setSearchText] = useState('');
   // 사이드 패널 오픈 여부
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-  const containerRef = useRef(null);
 
+  // 카테고리 상태
+  const [affiliations, setAffiliations] = useState([
+    { label: '취준생', selected: false },
+    { label: '학생', selected: false },
+    { label: '직장인', selected: false }
+  ]);
+  const [roles, setRoles] = useState([
+    { label: 'FrontEnd', selected: false },
+    { label: 'BackEnd', selected: false },
+    { label: 'Designer', selected: false },
+    { label: 'Engineer', selected: false }
+  ]);
+  const [languages, setLanguages] = useState([
+    'JavaScript','TypeScript','Python','Java','C#','C++','Ruby','Go','PHP','Swift','Kotlin','Rust','Dart'
+  ].map(lang => ({ label: lang, selected: false })));
+  const [langSearch, setLangSearch] = useState('');
+
+  const containerRef = useRef(null);
+  
   // masonry 레이아웃 재계산
   const onResize = useCallback(() => {
     if (containerRef.current) {
       masonryLayout(
-        containerRef.current, 
-        "fp-portfolio-item", 
+        containerRef.current,
+        "fp-portfolio-item",
         "fp-portfolio-img"
       );
     }
   }, []);
 
+  // 페이지 리스트
+  const displayedItems = portfolioItems.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
+
   useEffect(() => {
     if (!containerRef.current) return;
     masonryLayout(
-      containerRef.current, 
-      "fp-portfolio-item", 
+      containerRef.current,
+      "fp-portfolio-item",
       "fp-portfolio-img"
     );
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);    
+    return () => window.removeEventListener("resize", onResize);
   }, [displayedItems, onResize]);
 
-  // URL업데이트
+  // URL 업데이트
   useEffect(() => {
     navigate(`/portfolio/${currentPage}`, { replace: true });
   }, [currentPage, navigate]);
@@ -66,43 +84,19 @@ const PortfolioPage = () => {
     navigate('/portfolioDetail');
   };
 
-  // 이전 페이지로 이동
-  const handlePrevPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
+  // 카테고리 선택 토글
+  const toggleCategory = (list, setList, idx) => {
+    const copy = [...list];
+    copy[idx].selected = !copy[idx].selected;
+    setList(copy);
   };
 
-  // 다음 페이지로 이동
-  const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
-  };
-
-  // 첫 페이지로 이동
-  const handleFirstPage = () => {
-    setCurrentPage(1);
-  };
-
-  // 마지막 페이지로 이동
-  const handleLastPage = () => {
-    setCurrentPage(totalPages);
-  };
-
-  // 사이드 패널 오픈
-  const openSidePanel = () => {
-    setIsSidePanelOpen(true);
-  };
-
-  // 사이드 패널 닫기
-  const closeSidePanel = () => {
-    setIsSidePanelOpen(false);
-  };
-
-  // 아이콘 클릭 시 검색 처리
+  // 검색 실행
   const handleSearch = () => {
-    console.log("검색:", searchText);
-    // 검색 로직
+    console.log('검색 실행', { affiliations, roles, languages, searchText });
+    // 검색
   };
 
-  // 현재 페이지를 기준으로 5개 페이지 번호 계산
   const getPageNumbers = () => {
     let startPage = Math.max(1, currentPage - 2);
     let endPage = startPage + 4;
@@ -111,23 +105,16 @@ const PortfolioPage = () => {
       startPage = Math.max(1, endPage - 4);
     }
     const pages = [];
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
+    for (let i = startPage; i <= endPage; i++) pages.push(i);
     return pages;
   };
 
-  // 페이지 이동 버튼 (배열 정리)
   const paginationControls = [
-    { label: "«", onClick: handleFirstPage, disabled: currentPage === 1 },
-    { label: "‹", onClick: handlePrevPage, disabled: currentPage === 1 },
-    ...getPageNumbers().map(page => ({
-      label: String(page),
-      onClick: () => setCurrentPage(page),
-      active: currentPage === page
-    })),
-    { label: "›", onClick: handleNextPage, disabled: currentPage === totalPages },
-    { label: "»", onClick: handleLastPage, disabled: currentPage === totalPages }
+    { label: "«", onClick: () => setCurrentPage(1), disabled: currentPage === 1 },
+    { label: "‹", onClick: () => setCurrentPage(c => Math.max(c - 1, 1)), disabled: currentPage === 1 },
+    ...getPageNumbers().map(p => ({ label: String(p), onClick: () => setCurrentPage(p), active: p === currentPage })),
+    { label: "›", onClick: () => setCurrentPage(c => Math.min(c + 1, totalPages)), disabled: currentPage === totalPages },
+    { label: "»", onClick: () => setCurrentPage(totalPages), disabled: currentPage === totalPages }
   ];
 
   return (
@@ -137,41 +124,94 @@ const PortfolioPage = () => {
         <h1 className="fp-title">추천 포트폴리오</h1>
         <p className="fp-subtitle">다른 포트폴리오 구경하기</p>
         <div className="fp-search-row">
-          {/* 검색 입력창 */}
           <div className="fp-search-input-wrapper">
-            <input  
-              type="text" 
-              className="fp-search-input" 
-              placeholder="검색어를 입력해주세요." 
+            <input
+              type="text"
+              className="fp-search-input"
+              placeholder="검색어를 입력해주세요."
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              onChange={e => setSearchText(e.target.value)}
             />
-            {/* 검색창 아이콘 */}
-            <img 
-              src="assets/imgs/search.png"
+            <img
+              src="/assets/imgs/search_gray.png"
               alt='검색 아이콘'
-              className="fp-search-icon" 
+              className="fp-search-icon"
               onClick={handleSearch}
             />
           </div>
-          {/* 사이드 패널 토글 아이콘 */}
-          <div className="fp-SidePanel-icon" onClick={openSidePanel}>
-            &#9776;
-          </div>
+          <div className="fp-side-panel-icon" onClick={() => setIsSidePanelOpen(true)}>&#9776;</div>
         </div>
       </div>
 
-      {/* 사이드 패널 오버레이 (열린 경우) */}
-      {isSidePanelOpen && (
-        <div className="fp-overlay" onClick={closeSidePanel}></div>
-      )}
-
-      {/* 사이드 패널 */}
-      <div className={`fp-side-panel ${isSidePanelOpen ? 'open' : ''}`}>
+      {isSidePanelOpen && <div className="fp-overlay" onClick={() => setIsSidePanelOpen(false)}></div>}
+      <div className={`fp-side-panel ${isSidePanelOpen ? 'open' : ''}`}>        
         <div className="fp-side-panel-header">
           <span className="fp-side-panel-title">카테고리</span>
-          <span className="fp-side-panel-close" onClick={closeSidePanel}>&times;</span>
+          <span className="fp-side-panel-close" onClick={() => setIsSidePanelOpen(false)}>&times;</span>
         </div>
+        <div className="fp-side-panel-content">
+          {/* 소속 */}
+          <div className="fp-side-section">
+            <div className="fp-side-section-title small">소속</div>
+            <div className="fp-side-categories">
+              {affiliations.map((cat, idx) => (
+                <div
+                  key={idx}
+                  className={`fp-cat-item ${cat.selected ? 'selected' : ''}`}
+                  onClick={() => toggleCategory(affiliations, setAffiliations, idx)}
+                >
+                  {cat.label}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* 담당 역할 */}
+          <div className="fp-side-section">
+            <div className="fp-side-section-title small">담당 역할</div>
+            <div className="fp-side-categories">
+              {roles.map((cat, idx) => (
+                <div
+                  key={idx}
+                  className={`fp-cat-item ${cat.selected ? 'selected' : ''}`}
+                  onClick={() => toggleCategory(roles, setRoles, idx)}
+                >
+                  {cat.label}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* 언어 검색 */}
+          <div className="fp-side-section">
+            <div className="fp-side-section-title small">언어</div>
+            <div className="fp-search-input-wrapper small">
+              <input
+                type="text"
+                className="fp-lang-search"
+                placeholder="언어 검색"
+                value={langSearch}
+                onChange={e => setLangSearch(e.target.value)}
+              />
+            </div>
+            <div className="fp-side-categories fp-lang-list">
+              {languages
+                .filter(l => l.label.toLowerCase().includes(langSearch.toLowerCase()))
+                .map((lang, idx) => (
+                  <div
+                    key={idx}
+                    className={`fp-cat-item ${lang.selected ? 'selected' : ''}`}
+                    onClick={() => toggleCategory(languages, setLanguages, idx)}
+                  >
+                    {lang.label}
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+        {/* 검색 버튼 */}
+        <button className="fp-side-search-btn" onClick={handleSearch}>
+          <img src="/assets/imgs/search_white.png" alt="검색"/>
+          검색하기
+        </button>
       </div>
 
       <div className="fp-container">
@@ -192,24 +232,24 @@ const PortfolioPage = () => {
         {/* 포트폴리오 */}
         <div className="fp-portfolio-container" ref={containerRef}>
           {displayedItems.map(item => (
-            <div 
-              key={item.id} 
-              className="fp-portfolio-item" 
+            <div
+              key={item.id}
+              className="fp-portfolio-item"
               onClick={handlePortfolioClick}
             >
               <div className="fp-portfolio-like">
-                <img 
-                  src="/assets/imgs/Like_img.png" 
-                  alt="포트폴리오 좋아요" 
-                  className="fp-like-img" 
+                <img
+                  src="/assets/imgs/Like_img.png"
+                  alt="포트폴리오 좋아요"
+                  className="fp-like-img"
                 />
                 <div className="fp-like-count">{item.likes}</div>
               </div>
               <div className="fp-portfolio-img">
-                <img 
-                  src={item.img} 
-                  alt={item.title} 
-                  style={{ height: `${item.height}px` }} 
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  style={{ height: `${item.height}px` }}
                 />
               </div>
               <div className="fp-portfolio-title">{item.title}</div>
