@@ -1,0 +1,94 @@
+.myp-container {
+ font-family: sans-serif;
+ color: #333;
+}
+
+.myp-header {
+ background-color: gray;
+ height: 290px;
+}
+
+.myp-main {
+ margin: 40px 23%;
+}
+
+.myp-profile-summary {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ margin-bottom: 24px;
+}
+
+.myp-avatar {
+ width: 64px;
+ height: 64px;
+ border-radius: 50%;
+ background: #ccc;
+}
+
+.myp-userinfo {
+ display: flex;
+ flex-direction: column;
+}
+
+.myp-username {
+ margin: 0;
+ font-size: 20px;
+ font-weight: bold;
+}
+
+.myp-useremail {
+ margin: 4px 0 0;
+ font-size: 14px;
+ color: #787878;
+}
+
+.myp-details {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 32px;
+ gap: 20px;
+}
+
+.myp-details-col {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+ flex: 1;
+}
+
+.myp-detail-row {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 12px;
+}
+
+.myp-label {
+ width: 80px;
+ font-size: 20px;
+ color: #ff9f1c;
+ font-weight: bold;
+}
+
+.myp-value {
+ font-size: 20px;
+ color: #333;
+}
+
+.myp-badge {
+ display: inline-block;
+ background: #FF9B30;
+ border-radius: 4px;
+ padding: 2px 6px;
+ margin-right: 4px;
+ font-size: 15px;
+ color: #ffff;
+}
+
+.myp-portfolio-image {
+ width: 100%;
+ height: 200px;
+ background: #f0f0f0;
+ border-radius: 8px;
+}
