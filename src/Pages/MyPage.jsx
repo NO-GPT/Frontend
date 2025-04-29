@@ -21,8 +21,7 @@ const MyPage = () => {
   return (
     <div className="myp-container">
 
-      <div className="myp-header">
-        <img></img>
+      <div className="myp-hero">
       </div>
       {/* 메인 컨텐츠 */}
       <main className="myp-main">
@@ -39,51 +38,58 @@ const MyPage = () => {
         <div className="myp-details">
           <div className="myp-details-col">
             <div className="myp-detail-row">
-              <span className="myp-label">이름</span>
-              <span className="myp-value">{user.name}</span>
+              <div className="myp-label">이름</div>
+              <div className="myp-value">{user.name}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">소속</span>
-              <span className="myp-value">{user.affiliation}</span>
+              <div className="myp-label">소속</div>
+              <div className="myp-value">{user.affiliation}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">분야</span>
-              <span className="myp-value">{user.field}</span>
+              <div className="myp-label">분야</div>
+              <div className="myp-value">{user.field}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">생년월일</span>
-              <span className="myp-value">{user.birthdate}</span>
+              <div className="myp-label">생년월일</div>
+              <div className="myp-value">{user.birthdate}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">보유 스택</span>
-              <span className="myp-value">
+              <div className="myp-label">보유 스택</div>
+              <div className="myp-value">
                 {user.stacks.map((s) => (
-                  <span key={s} className="myp-badge">{s}</span>
+                  <div key={s} className="myp-badge">{s}</div>
                 ))}
-              </span>
+              </div>
             </div>
           </div>
           <div className="myp-details-col">
             <div className="myp-detail-row">
-              <span className="myp-label">나이</span>
-              <span className="myp-value">{user.age}</span>
+              <div className="myp-label">나이</div>
+              <div className="myp-value">{user.age}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">전화번호</span>
-              <span className="myp-value">{user.phone}</span>
+              <div className="myp-label">전화번호</div>
+              <div className="myp-value">{user.phone}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">Github</span>
-              <span className="myp-value">{user.github}</span>
+              <div className="myp-label">Github</div>
+              <div className="myp-value">{user.github}</div>
             </div>
             <div className="myp-detail-row">
-              <span className="myp-label">이메일</span>
-              <span className="myp-value">{user.email}</span>
+              <div className="myp-label">이메일</div>
+              <div className="myp-value">{user.email}</div>
             </div>
           </div>
         </div>
-
-        <div className="myp-portfolio-image" />
+        
+        <div className="myp-portfolio-list">
+          <div className="myp-portfolio__item" />
+          <div className="myp-portfolio__item" />
+          <div className="myp-portfolio__item" />
+          <div className="myp-portfolio__item" />
+          <div className="myp-portfolio__item" />
+          <div className="myp-portfolio__item" />
+        </div>
       </main>
     </div>
   );

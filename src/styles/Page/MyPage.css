@@ -3,9 +3,9 @@
  color: #333;
 }
 
-.myp-header {
+.myp-hero {
  background-color: gray;
- height: 290px;
+ height: 300px;
 }
 
 .myp-main {
@@ -66,13 +66,13 @@
 
 .myp-label {
  width: 80px;
- font-size: 20px;
+ font-size: 17px;
  color: #ff9f1c;
  font-weight: bold;
 }
 
 .myp-value {
- font-size: 20px;
+ font-size: 17px;
  color: #333;
 }
 
@@ -86,9 +86,16 @@
  color: #ffff;
 }
 
-.myp-portfolio-image {
+.myp-portfolio-list {
  width: 100%;
- height: 200px;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 15px;
+}
+
+.myp-portfolio__item {
+ width: 280px;
+ height: 380px;
  background: #f0f0f0;
  border-radius: 8px;
 }
