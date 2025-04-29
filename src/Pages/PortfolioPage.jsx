@@ -1,102 +1,116 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { masonryLayout } from '../utils/masonryLayout';
-import '../index.css';
 
-// 포트폴리오 (더미 데이터)
+// 카테고리 옵션
+const affiliationOptions = ['취준생', '학생', '직장인'];
+const roleOptions = ['FrontEnd', 'BackEnd', 'Designer', 'Engineer'];
+const languageOptions = ['JavaScript','TypeScript','Python','Java','C#','C++','Ruby','Go','PHP','Swift','Kotlin','Rust','Dart'];
+
+// 더미 데이터
 const portfolioItems = Array.from({ length: 500 }, (_, i) => ({
   id: i + 1,
   title: `포트폴리오 ${i + 1}`,
-  img: `/assets/imgs/test/${(i % 9) + 1}.png`,
+  img: `/assets/imgs/test/${(i % 9) + 1}.png`,  // 이미지 경로
   likes: Math.floor(Math.random() * 3000) + 100,
-  height: [250, 300, 350, 400, 450][i % 5]
+  height: [250, 300, 350, 400, 450][i % 5],
+  affiliation: affiliationOptions[i % affiliationOptions.length],
+  role: roleOptions[i % roleOptions.length],
+  language: languageOptions[i % languageOptions.length]
 }));
 
 const PortfolioPage = () => {
   const navigate = useNavigate();
   const { page } = useParams();
-
   const initialPage = parseInt(page, 10) || 1;
+
+  // 페이지네이션 상태
   const [currentPage, setCurrentPage] = useState(initialPage);
   const pageSize = 50;
-  const totalPages = Math.ceil(portfolioItems.length / pageSize);
 
-  // 검색어 상태
+  // 검색어 및 사이드 패널
   const [searchText, setSearchText] = useState('');
-  // 사이드 패널 오픈 여부
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
-  // 카테고리 상태
-  const [affiliations, setAffiliations] = useState([
-    { label: '취준생', selected: false },
-    { label: '학생', selected: false },
-    { label: '직장인', selected: false }
-  ]);
-  const [roles, setRoles] = useState([
-    { label: 'FrontEnd', selected: false },
-    { label: 'BackEnd', selected: false },
-    { label: 'Designer', selected: false },
-    { label: 'Engineer', selected: false }
-  ]);
-  const [languages, setLanguages] = useState([
-    'JavaScript','TypeScript','Python','Java','C#','C++','Ruby','Go','PHP','Swift','Kotlin','Rust','Dart'
-  ].map(lang => ({ label: lang, selected: false })));
+  // 카테고리 선택 상태
+  const [affiliations, setAffiliations] = useState(
+    affiliationOptions.map(label => ({ label, selected: false }))
+  );
+  const [roles, setRoles] = useState(
+    roleOptions.map(label => ({ label, selected: false }))
+  );
+  const [languages, setLanguages] = useState(
+    languageOptions.map(label => ({ label, selected: false }))
+  );
   const [langSearch, setLangSearch] = useState('');
 
   const containerRef = useRef(null);
-  
-  // masonry 레이아웃 재계산
   const onResize = useCallback(() => {
     if (containerRef.current) {
       masonryLayout(
         containerRef.current,
-        "fp-portfolio-item",
-        "fp-portfolio-img"
+        'fp-portfolio-item',
+        'fp-portfolio-img'
       );
     }
   }, []);
 
-  // 페이지 리스트
-  const displayedItems = portfolioItems.slice(
+  // 선택된 카테고리 라벨 리스트
+  const selectedAffs = affiliations.filter(a => a.selected).map(a => a.label);
+  const selectedRoles = roles.filter(r => r.selected).map(r => r.label);
+  const selectedLangs = languages.filter(l => l.selected).map(l => l.label);
+
+  // 필터링된 아이템
+  const filteredItems = portfolioItems.filter(item => {
+    if (searchText && !item.title.includes(searchText)) return false;
+    if (selectedAffs.length && !selectedAffs.includes(item.affiliation)) return false;
+    if (selectedRoles.length && !selectedRoles.includes(item.role)) return false;
+    if (selectedLangs.length && !selectedLangs.includes(item.language)) return false;
+    return true;
+  });
+
+  const totalPages = Math.ceil(filteredItems.length / pageSize);
+  const displayedItems = filteredItems.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
 
-
+  // 레이아웃 적용 및 리사이즈 핸들링
   useEffect(() => {
-    if (!containerRef.current) return;
-    masonryLayout(
-      containerRef.current,
-      "fp-portfolio-item",
-      "fp-portfolio-img"
-    );
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    if (containerRef.current) {
+      masonryLayout(
+        containerRef.current,
+        'fp-portfolio-item',
+        'fp-portfolio-img'
+      );
+    }
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, [displayedItems, onResize]);
 
-  // URL 업데이트
+  // URL 동기화
   useEffect(() => {
     navigate(`/portfolio/${currentPage}`, { replace: true });
   }, [currentPage, navigate]);
 
-  // 포트폴리오 항목 클릭 시 세부 페이지로 이동
-  const handlePortfolioClick = () => {
-    navigate('/portfolioDetail');
+  // 세부 페이지 이동
+  const handlePortfolioClick = id => {
+    navigate(`/portfolioDetail/${id}`);
   };
 
-  // 카테고리 선택 토글
+  // 카테고리 토글
   const toggleCategory = (list, setList, idx) => {
     const copy = [...list];
     copy[idx].selected = !copy[idx].selected;
     setList(copy);
   };
 
-  // 검색 실행
+  // 검색 버튼
   const handleSearch = () => {
-    console.log('검색 실행', { affiliations, roles, languages, searchText });
-    // 검색
+    setCurrentPage(1);
   };
 
+  // 페이지 개수 계산
   const getPageNumbers = () => {
     let startPage = Math.max(1, currentPage - 2);
     let endPage = startPage + 4;
@@ -110,16 +124,20 @@ const PortfolioPage = () => {
   };
 
   const paginationControls = [
-    { label: "«", onClick: () => setCurrentPage(1), disabled: currentPage === 1 },
-    { label: "‹", onClick: () => setCurrentPage(c => Math.max(c - 1, 1)), disabled: currentPage === 1 },
-    ...getPageNumbers().map(p => ({ label: String(p), onClick: () => setCurrentPage(p), active: p === currentPage })),
-    { label: "›", onClick: () => setCurrentPage(c => Math.min(c + 1, totalPages)), disabled: currentPage === totalPages },
-    { label: "»", onClick: () => setCurrentPage(totalPages), disabled: currentPage === totalPages }
+    { label: '«', onClick: () => setCurrentPage(1), disabled: currentPage === 1 },
+    { label: '‹', onClick: () => setCurrentPage(c => Math.max(c - 1, 1)), disabled: currentPage === 1 },
+    ...getPageNumbers().map(p => ({
+      label: String(p),
+      onClick: () => setCurrentPage(p),
+      active: p === currentPage
+    })),
+    { label: '›', onClick: () => setCurrentPage(c => Math.min(c + 1, totalPages)), disabled: currentPage === totalPages },
+    { label: '»', onClick: () => setCurrentPage(totalPages), disabled: currentPage === totalPages }
   ];
 
   return (
-    <div className="fp-page-wrapper">
-      {/* 헤더 영역 */}
+    <div className="fp-wrapper">
+      {/* 헤더 */}
       <div className="fp-header">
         <h1 className="fp-title">추천 포트폴리오</h1>
         <p className="fp-subtitle">다른 포트폴리오 구경하기</p>
@@ -134,7 +152,7 @@ const PortfolioPage = () => {
             />
             <img
               src="/assets/imgs/search_gray.png"
-              alt='검색 아이콘'
+              alt="검색 아이콘"
               className="fp-search-icon"
               onClick={handleSearch}
             />
@@ -159,9 +177,7 @@ const PortfolioPage = () => {
                   key={idx}
                   className={`fp-cat-item ${cat.selected ? 'selected' : ''}`}
                   onClick={() => toggleCategory(affiliations, setAffiliations, idx)}
-                >
-                  {cat.label}
-                </div>
+                >{cat.label}</div>
               ))}
             </div>
           </div>
@@ -174,9 +190,7 @@ const PortfolioPage = () => {
                   key={idx}
                   className={`fp-cat-item ${cat.selected ? 'selected' : ''}`}
                   onClick={() => toggleCategory(roles, setRoles, idx)}
-                >
-                  {cat.label}
-                </div>
+                >{cat.label}</div>
               ))}
             </div>
           </div>
@@ -200,17 +214,13 @@ const PortfolioPage = () => {
                     key={idx}
                     className={`fp-cat-item ${lang.selected ? 'selected' : ''}`}
                     onClick={() => toggleCategory(languages, setLanguages, idx)}
-                  >
-                    {lang.label}
-                  </div>
+                  >{lang.label}</div>
                 ))}
             </div>
           </div>
         </div>
-        {/* 검색 버튼 */}
         <button className="fp-side-search-btn" onClick={handleSearch}>
-          <img src="/assets/imgs/search_white.png" alt="검색"/>
-          검색하기
+          <img src="/assets/imgs/search_white.png" alt="검색"/> 검색하기
         </button>
       </div>
 
@@ -223,9 +233,7 @@ const PortfolioPage = () => {
               onClick={btn.onClick}
               disabled={btn.disabled}
               className={`fp-pagination-btn ${btn.active ? 'active' : ''}`}
-            >
-              {btn.label}
-            </button>
+            >{btn.label}</button>
           ))}
         </div>
 
@@ -235,7 +243,7 @@ const PortfolioPage = () => {
             <div
               key={item.id}
               className="fp-portfolio-item"
-              onClick={handlePortfolioClick}
+              onClick={() => handlePortfolioClick(item.id)}
             >
               <div className="fp-portfolio-like">
                 <img
