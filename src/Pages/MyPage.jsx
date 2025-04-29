@@ -27,10 +27,10 @@ const MyPage = () => {
       <main className="myp-main">
         {/* 프로필 요약 */}
         <div className="myp-profile-summary">
-          <div className="myp-avatar" />
+          <div className="myp-profile-img" />
           <div className="myp-userinfo">
-            <h2 className="myp-username">{user.username}</h2>
-            <p className="myp-useremail">{user.email}</p>
+            <div className="myp-username">{user.username}</div>
+            <div className="myp-useremail">{user.email}</div>
           </div>
         </div>
 
