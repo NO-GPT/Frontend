@@ -5,3 +5,4 @@ export { default as PortfolioCratePage } from './PortfolioCratePage.jsx';
 export { default as PortfolioDetailPage } from './PortfolioDetailPage.jsx';
 export { default as LoginPage } from './LoginPage.jsx';
 export { default as SignupPage } from './SignupPage.jsx';
+export { default as PortfolioDetailPage } from './PortfolioDetailPage.jsx';
