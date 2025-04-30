@@ -1,0 +1,147 @@
+.sp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  background-color: #f1f1f5;
+  padding: 20px;
+}
+
+.sp-box {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  background-color: #ffeace;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sp-image-placeholder {
+  margin: 10px;
+  width: 100%;
+  background-color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+}
+
+.sp-img {
+  height: 100%;
+  object-position: -100px;
+  object-fit: contain;
+}
+
+.sp-right {
+  width: 80%;
+  padding: 40px;
+  overflow-y: auto;
+  max-height: 500px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sp-right::-webkit-scrollbar {
+  display: none;
+}
+
+.sp-title {
+  font-size: 20px;
+  margin-top: 35px;
+  margin-bottom: 3px;
+  font-family: 'Paperlogy-4Regular', sans-serif;
+}
+
+.sp-title-underline {
+  width: 100%;
+  height: 2px;
+  background-color: #FF9B30;
+  margin-bottom: 30px;
+}
+
+.sp-input-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.sp-input-group label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.sp-input {
+  width: 93%;
+  height: 30px;
+  padding: 10px;
+  font-size: 0.83rem;
+  border: 1px solid #a1a1a1;
+  border-radius: 5px;
+}
+
+.sp-email-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp-email-input {
+  width: 70%;
+}
+
+.sp-verify-btn {
+  width: 20%;
+  height: 3.2rem;
+  background-color: #ff9b30;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sp-signup-btn {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  background-color: #ff9b30;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.sp-login-link {
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+  width: 100%;
+}
+
+.sp-login-movement-btn {
+  margin-bottom: 50px;
+  text-decoration: none;
+  color: #ff9b30;
+}
+
+.sp-input-error {
+  border-color: red;
+}
+
+.sp-error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.sp-scroll-container {
+  width: 100%;
+  height: 100%;
+}

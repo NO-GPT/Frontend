@@ -1,6 +1,10 @@
+@import "/src/styles/base/_fonts.css";
+
 @import "./styles/_global.css";
 
+@import "./styles/Page/MainPage.css";
 @import "./styles/Page/LoginPage.css";
+@import "./styles/Page/SingupPage.css";
 
 @import "./styles/Components/Header.css";
 
