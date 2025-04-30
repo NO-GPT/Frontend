@@ -12,28 +12,8 @@ code {
     monospace;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-*{
-  font-family: 'Paperlogy-5Medium', sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.main-content {
-  background-color: #ffffff;
-  flex: 1;
-  overflow-y: auto;
-}
-
-img {
-  height: 100%;
+.content {
+  background-color: #F1F1F5;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
 }
