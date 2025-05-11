@@ -17,6 +17,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* img css */
 .sp-image-placeholder {
   margin: 10px;
   width: 100%;
@@ -37,6 +38,7 @@
   object-fit: contain;
 }
 
+/* right css */
 .sp-right {
   width: 80%;
   padding: 40px;
@@ -54,6 +56,7 @@
   font-size: 20px;
   margin-top: 35px;
   margin-bottom: 3px;
+  font-weight: bold;
   font-family: 'Paperlogy-4Regular', sans-serif;
 }
 
@@ -64,6 +67,12 @@
   margin-bottom: 30px;
 }
 
+.sp-scroll-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* input css */
 .sp-input-group {
   width: 100%;
   margin-bottom: 15px;
@@ -84,17 +93,18 @@
   border-radius: 5px;
 }
 
-.sp-email-input-container {
+/* email css */
+.sp-email-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .sp-email-input {
   width: 70%;
 }
 
-.sp-verify-btn {
+.sp-confirm-btn {
   width: 20%;
   height: 3.2rem;
   background-color: #ff9b30;
@@ -103,8 +113,28 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
+/* verification css */
+.sp-verification-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sp-timer {
+  position: absolute;
+  font-size: 14px;
+  right: 25%; 
+  top: 50%; 
+  transform: translateY(-50%);
+  color: #FF9B30;
+}
+
+
+
+/* 회원가입 버튼 */
 .sp-signup-btn {
   width: 100%;
   height: 40px;
@@ -118,6 +148,7 @@
   margin-bottom: 30px;
 }
 
+/* 이미 계정이 있으신가요? */
 .sp-login-link {
   font-size: 13px;
   color: #999999;
@@ -131,6 +162,7 @@
   color: #ff9b30;
 }
 
+/* error css */
 .sp-input-error {
   border-color: red;
 }
@@ -139,9 +171,4 @@
   color: red;
   font-size: 12px;
   margin-top: 5px;
-}
-
-.sp-scroll-container {
-  width: 100%;
-  height: 100%;
 }
