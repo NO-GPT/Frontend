@@ -28,6 +28,51 @@
  color: #767676;
 }
 
+/* 설정 팝업 */
+.pdp-title-wrapper {
+ display: flex;
+ align-items: center;
+ position: relative;
+ justify-content: space-between;
+ gap: 8px;
+}
+
+.pdp-settings-button {
+ background: transparent;
+ border: none;
+ font-size: 24px;
+ line-height: 1;
+ cursor: pointer;
+ padding: 4px;
+}
+
+.pdp-settings-menu {
+ position: absolute;
+ top: 100%;
+ right: 0;
+ background: #fff;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+ border-radius: 4px;
+ overflow: hidden;
+ margin-top: 4px;
+ z-index: 10;
+}
+
+.pdp-menu-item {
+ color: rgb(35, 35, 35);
+ text-decoration: none;
+ display: flex;
+ width: 100%;
+ padding: 8px 12px;
+ font-size: 14px;
+ white-space: nowrap;
+ cursor: pointer;
+}
+
+.pdp-menu-item:hover {
+ background: #f2f2f2;
+}
+
 /* 스택 / 역할 */
 .pdp-info {
  display: flex;
@@ -66,6 +111,7 @@
  margin-bottom: 8px;
 }
 .pdp-detail-text {
+ white-space: pre-wrap;
  font-size: 14px;
  line-height: 1.6;
 }
@@ -104,37 +150,21 @@
  border-radius: 4px;
 }
 
-/* download */
-
-.pdp-download {
- width: 260px;
- display: flex;
- flex-direction: column;
- gap: 12px;
-}
-
-.pdp-download-card {
- width: 260px;
- height: 250px;
+.pdp-pdf-loading {
+ flex: 1;
+ height: 450px;
  display: flex;
  align-items: center;
  justify-content: center;
- box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
- border-radius: 4px;
+ background: #f9f9f9;
+ color: #555;
+ font-size: 16px;
 }
 
-.pdp-pdf-img {
- width: 100px;
- height: 120px;
- margin-right: 8px;
-}
-
-.pdp-download-btn {
- height: 43px;
- background: #ff9f1c;
- color: #fff;
- border: none;
- padding: 10px;
- border-radius: 4px;
- cursor: pointer;
+.pdp-error-page {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ height: 80vh;
 }

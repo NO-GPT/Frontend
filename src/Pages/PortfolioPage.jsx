@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { masonryLayout } from '../utils/masonryLayout';
 
@@ -16,7 +16,8 @@ const portfolioItems = Array.from({ length: 500 }, (_, i) => ({
   height: [250, 300, 350, 400, 450][i % 5],
   affiliation: affiliationOptions[i % affiliationOptions.length],
   role: roleOptions[i % roleOptions.length],
-  language: languageOptions[i % languageOptions.length]
+  language: languageOptions[i % languageOptions.length],
+  Author : ['user1', 'user2', 'user3', 'user4', 'user5'][i % 5],
 }));
 
 const PortfolioPage = () => {

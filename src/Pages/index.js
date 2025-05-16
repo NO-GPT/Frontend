@@ -5,4 +5,3 @@ export { default as PortfolioCreatePage } from './PortfolioCreatePage.jsx';
 export { default as PortfolioDetailPage } from './PortfolioDetailPage.jsx';
 export { default as LoginPage } from './LoginPage.jsx';
 export { default as SignupPage } from './SignupPage.jsx';
-export { default as CreatePortfolioPage } from './CreatePortfolioPage.jsx';

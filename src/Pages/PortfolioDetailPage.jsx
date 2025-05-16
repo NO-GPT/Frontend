@@ -1,36 +1,77 @@
+import { useState, useEffect, useRef } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { portfolioDetails } from '../data/portfolioDetailData';
+
 const PortfolioDetailPage = () => {
+  const { id } = useParams();
+  const detail = portfolioDetails.find(item => item.id === Number(id));
+  const [pdfLoading, setPdfLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef();
+
+  useEffect(() => {
+    // 실제 PDF 로딩 로직을 이곳에 구현
+    const timer = setTimeout(() => setPdfLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  if (!detail) {
+    return <div className='pdp-error-page'>잘못된 포트폴리오 id입니다.</div>;
+  }
+
+  const { title, subtitle, stacks, role, details } = detail;
 
   return (
     <div className="pdp-container">
+      <div className="pdp-hero" />
 
-      <div className="pdp-hero">
-      </div>      
-
-      <div className='pdp-main'>
-
+      <div className="pdp-main">
         <div className="pdp-header">
-          <div className="pdp-title">Title</div>
-          <div className="pdp-subtitle">subTitle</div>
+          <div className="pdp-title-wrapper">
+            <div className="pdp-title">{title}</div>
+            <button
+              className="pdp-settings-button"
+              onClick={() => setMenuOpen(open => !open)}
+            >
+              …
+            </button>
+            {menuOpen && (
+              <div className="pdp-settings-menu" ref={menuRef}>
+                <div className="pdp-menu-item">PDF 다운로드</div>
+                <Link className="pdp-menu-item"to={`/edit/${id}`}>수정</Link>
+                <div className="pdp-menu-item">삭제</div>
+              </div>
+            )}
+          </div>
+          <div className="pdp-subtitle">{subtitle}</div>
         </div>
 
-        {/* 사용 스택 / 담당 역할 */}
         <div className="pdp-info">
           <div className="pdp-info-group">
             <div className="pdp-info-label">사용 스택</div>
             <div className="pdp-info-badges">
-              <div className="pdp-badge">Figma</div>
+              {stacks.map((s, i) => <div key={i} className="pdp-badge">{s}</div>)}
             </div>
           </div>
           <div className="pdp-info-group">
             <div className="pdp-info-label">담당역할</div>
-            <div className="pdp-badge">디자이너</div>
+            <div className="pdp-badge">{role}</div>
           </div>
         </div>
 
         <div className="pdp-detail-section">
-          <h3 className="pdp-section-title">상세내용</h3>
-          <p className="pdp-detail-text">사용자 피로도를 줄이기 위해 여백을 충분히 활용하고, 불필요한 정보를 최소화하여 직관적인 UI를 구성했습니다. 메인 컬러로는 보라색 계열을 사용해 감성적이고 세련된 분위기를 조성했으며, 음악 앱이 제공할 수 있는 취향 기반의 추천과 감정적 공감 요소를 강조했습니다. <br />
-          Linkly를 디자인하며 감성적인 사용자 경험을 어떻게 시각적으로 풀어낼지에 대해 많이 고민했습니다. 여백과 컬러, 콘텐츠 흐름을 조화롭게 구성하는 과정에서 ‘사용되기 위한 디자인’의 중요성을 배울 수 있었습니다. 특히 음악이라는 콘텐츠의 특성상, 사용자와의 정서적 연결을 고려한 UI 설계가 중요하다는 점을 깨달았습니다.</p>
+          <div className="pdp-section-title">상세내용</div>
+          <div className="pdp-detail-text">{details}</div>
         </div>
 
         <div className="pdp-pagination">
@@ -40,16 +81,14 @@ const PortfolioDetailPage = () => {
         </div>
 
         <div className="pdp-pdf-loader">
-          <div className="pdp-pdf-container" />
+          {pdfLoading ? (
+            <div className="pdp-pdf-loading">PDF 로딩중...</div>
+          ) : (
+            <div className="pdp-pdf-container">
+              {/* PDF 랜더링 컴포넌트 삽입 */}
+            </div>
+          )}
         </div>
-
-        <div className="pdp-download">
-          <div className="pdp-download-card">
-            <img src="/assets/imgs/pdf_img.png" alt="PDF" className="pdp-pdf-img" />
-          </div>
-          <button className="pdp-download-btn">파일 다운로드</button>
-        </div>
-
       </div>
     </div>
   );

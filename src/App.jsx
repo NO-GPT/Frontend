@@ -9,7 +9,6 @@ import {
   SignupPage, 
   PortfolioDetailPage,
   PortfolioCreatePage,
-  CreatePortfolioPage, 
   } from './Pages';
 import "./index.css";
 
@@ -25,8 +24,8 @@ const App = () => {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/portfolioDetail/:id" element={<PortfolioDetailPage />} />
-          <Route path="/Create" element={<PortfolioCreatePage />} />
-          <Route path="/create" element={<CreatePortfolioPage />} />
+          <Route path="/create" element={<PortfolioCreatePage />} />
+          <Route path="/edit/:id" element={<PortfolioCreatePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
