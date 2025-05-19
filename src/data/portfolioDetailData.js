@@ -4,7 +4,7 @@ export const portfolioDetails = Array.from({ length: 300 }, (_, index) => {
     id,
     title: `${id}번째 포트폴리오`,
     subtitle: `서브타이틀`,
-    stacks: ['React', 'TypeScript', 'Figma'].slice(0, (id % 3) + 1),
+    stacks: ['JavaScript','TypeScript','Python','Java','C#','C++','Ruby','Go','PHP','Swift','Kotlin','Rust','Dart'].slice(0, (id % 3) + 1),
     role: ['디자이너', 'FrontEnd', 'BackEnd', 'PM'][id % 4],
     details: `이 프로젝트는 ${id}번째 예시 프로젝트 입니다.\n`
   };

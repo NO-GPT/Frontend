@@ -89,6 +89,7 @@ const PortfolioPage = () => {
     setList(list.map(item =>
       item.label === label ? { ...item, selected: !item.selected } : item
     ));
+    setPage(1);
   };
 
   // 현재 페이지 기준 주변 페이지 번호 계산
