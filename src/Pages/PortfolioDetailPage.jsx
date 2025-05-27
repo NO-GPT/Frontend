@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Document, Page, pdfjs } from 'react-pdf';
-import { portfolioDetails } from '../data/portfolioDetailData';
+import { portfolioDetails } from '../data';
 
 // 워커 설정
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -38,7 +38,7 @@ const PortfolioDetailPage = () => {
   if (!detail) {
     return <div className="pdp-error-page">잘못된 포트폴리오 id입니다.</div>;
   }
-  const { title, subtitle, stacks, role, details, pdfUrl } = detail;
+  const { title, subtitle, language, role, details, pdfUrl } = detail;
 
   // pdf 페이지 이탈 방지
   const handleChangePage = (offset) => {
@@ -78,7 +78,7 @@ const PortfolioDetailPage = () => {
           <div className="pdp-info-group">
             <div className="pdp-info-label">사용 스택</div>
             <div className="pdp-info-badges"> 
-              {stacks.map((s, i) => (
+              {language.map((s, i) => (
                 <div key={i} className="pdp-badge">
                   {s}
                 </div>

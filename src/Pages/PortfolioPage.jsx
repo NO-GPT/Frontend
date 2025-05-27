@@ -1,24 +1,12 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { masonryLayout } from '../utils/masonryLayout';
+import { portfolioDetails } from '../data'; // 더미 데이터
 
 // 카테고리 옵션
 const affiliationOptions = ['취준생', '학생', '직장인'];
 const roleOptions = ['FrontEnd', 'BackEnd', 'Designer', 'Engineer'];
 const languageOptions = ['JavaScript','TypeScript','Python','Java','C#','C++','Ruby','Go','PHP','Swift','Kotlin','Rust','Dart'];
-
-// 더미 데이터 생성
-const portfolioItems = Array.from({ length: 500 }, (_, i) => ({
-  id: i + 1,
-  title: `포트폴리오 ${i + 1}`,
-  img: `/assets/imgs/test/${(i % 9) + 1}.png`,
-  likes: Math.floor(Math.random() * 3000) + 100,
-  height: [250, 300, 350, 400, 450][i % 5],
-  affiliation: affiliationOptions[i % affiliationOptions.length],
-  role: roleOptions[i % roleOptions.length],
-  language: languageOptions[i % languageOptions.length],
-  Author : ['user1', 'user2', 'user3', 'user4', 'user5'][i % 5],
-}));
 
 const PortfolioPage = () => {
   const navigate = useNavigate();
@@ -52,11 +40,13 @@ const PortfolioPage = () => {
   const selectedLangs = languages.filter(l => l.selected).map(l => l.label);
 
   // 포트폴리오 아이템 필터링
-  const filteredItems = portfolioItems.filter(item => {
+  const filteredItems = portfolioDetails.filter(item => {
     if (searchText && !item.title.includes(searchText)) return false;
     if (selectedAffs.length && !selectedAffs.includes(item.affiliation)) return false;
     if (selectedRoles.length && !selectedRoles.includes(item.role)) return false;
-    if (selectedLangs.length && !selectedLangs.includes(item.language)) return false;
+    if (selectedLangs.length && 
+      !item.language.some(lang => selectedLangs.includes(lang))
+  ) return false;
     return true;
   });
 
