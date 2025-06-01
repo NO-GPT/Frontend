@@ -1,4 +1,4 @@
-.login-container {
+.lp-container {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -7,7 +7,7 @@
  padding: 20px;
 }
 
-.login-box {
+.lp-box {
  display: flex;
  width: 900px;
  height: 500px;
@@ -17,17 +17,8 @@
  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-left {
- flex: 1;
- display: flex;
- justify-content: center;
- align-items: center;
- background-color: #ffeace;
- padding: 10px;
-}
-
-
-.image-placeholder {
+/* img css */
+.lp-image-placeholder {
  margin: 10px;
  width: 100%;
  background-color: #aaa;
@@ -41,44 +32,47 @@
  overflow: hidden;
 }
 
-.login-img {
+.lp-img {
  height: 100%;
  object-position: -100px;
  object-fit: contain;
 }
 
-.login-right {
+/* right css */
+.lp-right {
  width: 80%;
  padding: 40px;
 }
 
-.login-title {
+.lp-title {
  font-size: 20px;
  margin-top: 35px;
  margin-bottom: 3px;
+ font-weight: bold;
  font-family: 'Paperlogy-4Regular', sans-serif;
 }
 
-.title-underline {
+.lp-title-underline {
  width: 100%;
  height: 2px;
  background-color: #FF9B30;
  margin-bottom: 30px;
 }
 
-.input-group {
+/* input css */
+.lp-input-group {
  width: 100%;
  margin-bottom: 15px;
 }
 
-.input-group label {
+.lp-input-group label {
  font-size: 12px;
  display: block;
  margin-bottom: 2px;
 }
 
-.login-input {
- width: 93%;
+.lp-input {
+ width: 94%;
  height: 30px;
  padding: 10px;
  font-size: 0.83rem;
@@ -86,7 +80,8 @@
  border-radius: 5px;
 }
 
-.login-options {
+/* 아이디기억하기 css */
+.lp-login-options {
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -96,18 +91,19 @@
  margin-bottom: 25px;
 }
 
-.remember-me {
+.lp-remember-me {
  display: flex;
  align-items: center;
  gap: 5px;
  color: black;
 }
 
-.forgot-password {
- text-align: right;
+.lp-remember-checkbox {
+ accent-color: #FF9B30;
 }
 
-.login-btn {
+/* 로그인 버튼 css */
+.lp-login-btn {
  width: 100%;
  height: 40px;
  padding: 10px;
@@ -120,15 +116,27 @@
  margin-bottom: 30px;
 }
 
-.signup-link {
+/* 아직 계정이 없으신가요? */
+.lp-signup-link {
  font-size: 13px;
  color: #999999;
  text-align: center;
  width: 100%;
 }
 
-.signup-movement-btn {
+.lp-signup-movement-btn {
  margin-bottom: 50px;
  text-decoration: none;
  color: #ff9b30;
+}
+
+/* error css */
+.lp-input-error {
+ border-color: red;
+}
+
+.lp-error-message {
+ color: red;
+ font-size: 12px;
+ margin-top: 5px;
 }
