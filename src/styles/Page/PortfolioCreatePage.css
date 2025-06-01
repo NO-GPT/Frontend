@@ -1,7 +1,5 @@
 .pcp-container * {
   font-size: 14px;
-  font-weight: bold;
-  font-family: 'Paperlogy-1Thin', sans-serif;
 }   
 
 /* 페이지 해더 */
@@ -66,6 +64,8 @@
 
 .pcp-label {
   color: #999999;
+  font-family: 'Paperlogy-1Thin', sans-serif;
+  font-weight: bold;
 }
 
 .pcp-input {
@@ -104,16 +104,22 @@
 }
 
 .pcp-stack-badge {
-  background: #e0e0e0;
-  color: #333;
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f0f0;
   border-radius: 4px;
-  padding: 5px 8px;
-  display: flex;
-  gap: 10px;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
 }
 
 .pcp-remove-stack-btn {
-  cursor: pointer;
+  margin-left: 6px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #999;
 }
 
 /* 담당역할 */

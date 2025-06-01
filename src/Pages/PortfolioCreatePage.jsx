@@ -228,11 +228,10 @@ const PortfolioCreatePage = () => {
             </div>
             <div className="pcp-stack-list">
               {stacks.map((s, idx) => (
-                <div key={idx} className="pcp-stack-badge">
+                <div key={idx} className="pcp-stack-badge" onClick={() => removeStack(s)}>
                   {s}
                   <div
                     className="pcp-remove-stack-btn"
-                    onClick={() => removeStack(s)}
                   >
                     ×
                   </div>
