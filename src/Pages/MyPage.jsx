@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
+  const navigate = useNavigate();
+
+  const portfolioCount = 3;
+  const totalItems = portfolioCount + 1;
+
   const [user, setUser] = useState({
-    username: "userName",
+    username: "userName", 
     email: "userName@gmail.com",
     name: "유저",
     affiliation: "학생",
@@ -32,6 +38,10 @@ const MyPage = () => {
             <div className="myp-username">{user.username}</div>
             <div className="myp-useremail">{user.email}</div>
           </div>
+
+          <button className="myp-edit-btn" onClick={() => navigate("edit")}>
+            프로필 편집
+          </button>
         </div>
 
         {/* 상세 정보 */}
@@ -57,7 +67,7 @@ const MyPage = () => {
               <div className="myp-label">보유 스택</div>
               <div className="myp-value">
                 {user.stacks.map((s) => (
-                  <div key={s} className="myp-badge">{s}</div>
+                  <div key={s} className="myp-stack">{s}</div>
                 ))}
               </div>
             </div>
@@ -83,12 +93,23 @@ const MyPage = () => {
         </div>
         
         <div className="myp-portfolio-list">
-          <div className="myp-portfolio__item" />
-          <div className="myp-portfolio__item" />
-          <div className="myp-portfolio__item" />
-          <div className="myp-portfolio__item" />
-          <div className="myp-portfolio__item" />
-          <div className="myp-portfolio__item" />
+          {Array.from({ length: totalItems }).map((_, idx) => {
+            const isCreate = idx === totalItems - 1;
+
+            return isCreate ? (
+              <div
+                key="create"
+                className="myp-portfolio__item myp-portfolio__item--create"
+                onClick={() => navigate("/create")}
+              >
+                +
+              </div>
+            ) : (
+              <div key={idx} className="myp-portfolio__item">
+                {/* 나중에 실제 포트폴리오 카드 컴포넌트로 교체 */}
+              </div>
+            );
+          })}
         </div>
       </main>
     </div>

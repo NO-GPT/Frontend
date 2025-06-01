@@ -1,6 +1,7 @@
 @import "./styles/_global.css";
 
 @import "./styles/Page/MyPage.css";
+@import "./styles/Page/EditMyPage.css";
 
 @import "./styles/Components/Header.css";
 
