@@ -90,7 +90,7 @@
   box-sizing: border-box;
 }
 
-/* 나이 + 단위 */
+/* 나이 */
 .edp-age-input-wrapper {
   position: relative;
   display: flex;
@@ -98,7 +98,7 @@
 }
 
 .edp-age-input {
-  padding: 10px 30px 10px 10px; /* 오른쪽에 “세” 공간 확보 */
+  padding: 10px 30px 10px 10px;
 }
 
 .edp-age-unit-inside {
@@ -120,7 +120,7 @@
 }
 
 .edp-stack-add-btn {
-  margin-top: 23px;
+  margin-top: 21px;
   width: 70px;
   height: 42px;
   border: none;
@@ -131,14 +131,7 @@
   cursor: pointer;
 }
 
-/* 스택 입력 영역 (가로 배치) */
-.edp-stacks-input-area {
-  display: flex;
-  gap: 8px;
-  margin-top: 4px;
-}
 
-/* 입력창(텍스트) */
 .pcp-stack-input {
   flex: 1;
 }
@@ -151,7 +144,6 @@
   margin-top: 8px;
 }
 
-/* 개별 스택 뱃지 */
 .edp-stack-badge {
   display: inline-flex;
   align-items: center;
@@ -163,7 +155,6 @@
   cursor: pointer;
 }
 
-/* 뱃지 안의 삭제 버튼 */
 .edp-remove-stack-btn {
   margin-left: 6px;
   border: none;

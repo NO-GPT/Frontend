@@ -39,7 +39,7 @@ const EditProfilePage = () => {
     const trimmed = stackInput.trim();
     if (trimmed === "") return;
     if (stacks.includes(trimmed)) {
-      setStackInput(""); // 중복 방지 후 입력창 초기화
+      setStackInput("");
       return;
     }
     setStacks((prev) => [...prev, trimmed]);
@@ -124,23 +124,21 @@ const EditProfilePage = () => {
             </InputGroup>
 
             <InputGroup label="보유 스택">
-              <div className="edp-stacks-input-area">
-                <input
-                  type="text"
-                  id="stacks"
-                  name="stacks"
-                  className="edp-input pcp-stack-input"
-                  placeholder="보유 스택을 추가해주세요"
-                  value={stackInput}
-                  onChange={(e) => setStackInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      handleStackAdd();
-                    }
-                  }}
-                />
-              </div>
+              <input
+                type="text"
+                id="stacks"
+                name="stacks"
+                className="edp-input pcp-stack-input"
+                placeholder="보유 스택을 추가해주세요"
+                value={stackInput}
+                onChange={(e) => setStackInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleStackAdd();
+                  }
+                }}
+              />
               {/* 추가한 스택 */}
               {stacks.length > 0 && (
                 <div className="edp-stack-list">
