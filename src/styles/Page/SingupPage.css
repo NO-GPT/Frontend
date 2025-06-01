@@ -1,4 +1,4 @@
-.signup-container {
+.sp-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-.signup-box {
+.sp-box {
   display: flex;
   width: 900px;
   height: 500px;
@@ -17,7 +17,8 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.image-placeholder {
+/* img css */
+.sp-image-placeholder {
   margin: 10px;
   width: 100%;
   background-color: #aaa;
@@ -31,13 +32,14 @@
   overflow: hidden;
 }
 
-.signup-img {
+.sp-img {
   height: 100%;
   object-position: -100px;
   object-fit: contain;
 }
 
-.signup-right {
+/* right css */
+.sp-right {
   width: 80%;
   padding: 40px;
   overflow-y: auto;
@@ -46,36 +48,43 @@
   -ms-overflow-style: none;
 }
 
-.signup-right::-webkit-scrollbar {
+.sp-right::-webkit-scrollbar {
   display: none;
 }
 
-.signup-title {
+.sp-title {
   font-size: 20px;
   margin-top: 35px;
   margin-bottom: 3px;
+  font-weight: bold;
   font-family: 'Paperlogy-4Regular', sans-serif;
 }
 
-.title-underline {
+.sp-title-underline {
   width: 100%;
   height: 2px;
   background-color: #FF9B30;
   margin-bottom: 30px;
 }
 
-.input-group {
+.sp-scroll-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* input css */
+.sp-input-group {
   width: 100%;
   margin-bottom: 15px;
 }
 
-.input-group label {
+.sp-input-group label {
   font-size: 12px;
   display: block;
   margin-bottom: 2px;
 }
 
-.signup-input {
+.sp-input {
   width: 93%;
   height: 30px;
   padding: 10px;
@@ -84,17 +93,18 @@
   border-radius: 5px;
 }
 
-.email-input-container {
+/* email css */
+.sp-email-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 15px;
 }
 
-.email-input {
+.sp-email-input {
   width: 70%;
 }
 
-.verify-btn {
+.sp-confirm-btn {
   width: 20%;
   height: 3.2rem;
   background-color: #ff9b30;
@@ -103,9 +113,29 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-.signup-btn {
+/* verification css */
+.sp-verification-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sp-timer {
+  position: absolute;
+  font-size: 14px;
+  right: 25%; 
+  top: 50%; 
+  transform: translateY(-50%);
+  color: #FF9B30;
+}
+
+
+
+/* 회원가입 버튼 */
+.sp-signup-btn {
   width: 100%;
   height: 40px;
   padding: 10px;
@@ -118,15 +148,27 @@
   margin-bottom: 30px;
 }
 
-.login-link {
+/* 이미 계정이 있으신가요? */
+.sp-login-link {
   font-size: 13px;
   color: #999999;
   text-align: center;
   width: 100%;
 }
 
-.login-movement-btn {
+.sp-login-movement-btn {
   margin-bottom: 50px;
   text-decoration: none;
   color: #ff9b30;
+}
+
+/* error css */
+.sp-input-error {
+  border-color: red;
+}
+
+.sp-error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
