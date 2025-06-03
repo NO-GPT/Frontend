@@ -81,7 +81,6 @@ const PortfolioDetailPage = () => {
           <div className="pdp-subtitle">{subtitle}</div>
         </div>
 
-        {/* 정보 */}
         <div className="pdp-info">
           <div className="pdp-info-group">
             <div className="pdp-info-label">사용 스택</div>
@@ -91,16 +90,16 @@ const PortfolioDetailPage = () => {
               ))}
             </div>
           </div>
+
           <div className="pdp-info-group">
             <div className="pdp-info-label">담당 역할</div>
             <div className="pdp-badge">{role}</div>
           </div>
-        </div>
 
-        {/* 상세내용 */}
-        <div className="pdp-detail-section">
-          <div className="pdp-section-title">상세내용</div>
-          <div className="pdp-detail-text">{details}</div>
+          <div className="pdp-detail-section">
+            <div className="pdp-section-title">상세내용</div>
+            <div className="pdp-detail-text">{details}</div>
+          </div>
         </div>
 
         <div className="pdp-pagination">
