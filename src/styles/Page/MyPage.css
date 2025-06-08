@@ -1,0 +1,252 @@
+.myp-container {
+  font-family: sans-serif;
+  color: #333;
+}
+
+.myp-hero {
+  background-color: gray;
+  height: 320px;
+}
+
+.myp-main {
+  margin: 40px 23%;
+}
+
+/* 프로필 요약 */
+.myp-profile-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.myp-profile-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.myp-userinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.myp-edit-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.myp-username {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.myp-useremail {
+  font-size: 14px;
+  color: #787878;
+}
+
+/* 상세 정보 */
+.myp-details {
+  display: flex;
+  margin-bottom: 32px;
+  gap: 20px;
+}
+
+.myp-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.myp-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.myp-label {
+  width: 80px;
+  font-size: 17px;
+  color: #ff9f1c;
+  font-weight: bold;
+}
+
+.myp-value {
+  font-size: 17px;
+  display: flex;
+  gap: 4px;
+  color: #333;
+}
+
+.myp-stack {
+  display: inline-block;
+  background: #ff9f1c;
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-right: 4px;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* 포트폴리오 섹션 */
+.myp-portfolio-section {
+  margin-bottom: 40px;
+}
+
+.myp-portfolio-title {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 16px;
+  margin: 0;
+}
+
+/* 포트폴리오 리스트 */
+.myp-portfolio-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 8px;
+  height: 370px;
+  align-items: flex-end;
+}
+
+/* 스크롤바 스타일 */
+.myp-portfolio-list::-webkit-scrollbar {
+  height: 8px;
+}
+.myp-portfolio-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* 카드 */
+.myp-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  width: 240px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.myp-card:hover {
+  transform: translateY(-8px);
+  z-index: 10;
+}
+
+/* 카드 이미지 */
+.myp-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.myp-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 카드 이미지 오버레이 */
+.myp-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* 카드 본문 */
+.myp-card-body {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.myp-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* 설명 텍스트 */
+.myp-card-desc {
+  font-size: 12px;
+  color: #787878;
+  margin-bottom: 8px;
+}
+
+/* 카드 하단 정보 */
+.myp-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.myp-card-likes {
+  display: flex;
+  align-items: center;
+}
+
+.myp-card-like-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.myp-card-like-count {
+  font-size: 14px;
+  color: #ff9f1c;
+}
+
+/* 아이콘 */
+.myp-card-bookmark-icon {
+  width: 17px;
+  height: 20px;
+}
+
+.myp-card-heart-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* create 카드 */
+.myp-card--create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  color: #878787;
+  font-size: 48px;
+  flex: 0 0 auto;
+  width: 240px;
+  height: 350px;
+}
+
+.myp-card--create:hover {
+  background: #e0e0e0;
+}
