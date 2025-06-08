@@ -1,14 +1,124 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PortfolioCard from "../utils/PortfolioCard";
 
 const MyPage = () => {
   const navigate = useNavigate();
 
-  const portfolioCount = 3;
-  const totalItems = portfolioCount + 1;
+  // 예시 데이터: 6개로 늘림
+  const [ownPortfolios, setOwnPortfolios] = useState([
+    {
+      id: 1,
+      title: "오즐 1",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/1.png",
+      likes: 2890,
+    },
+    {
+      id: 2,
+      title: "오즐 2",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/2.png",
+      likes: 1800,
+    },
+    {
+      id: 3,
+      title: "오즐 3",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/3.png",
+      likes: 2200,
+    },
+    {
+      id: 4,
+      title: "오즐 4",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/4.png",
+      likes: 3400,
+    },
+    {
+      id: 5,
+      title: "오즐 5",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/5.png",
+      likes: 1250,
+    },
+    {
+      id: 6,
+      title: "오즐 6",
+      description:
+        "오즐은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/6.png",
+      likes: 970,
+    },
+  ]);
+
+  const [likedPortfolios, setLikedPortfolios] = useState([
+    {
+      id: 7,
+      title: "노닥노닥 1",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/1.png",
+      likes: 2890,
+      bookmarked: true,
+    },
+    {
+      id: 8,
+      title: "노닥노닥 2",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/2.png",
+      likes: 1800,
+      liked: true,
+    },
+    {
+      id: 9,
+      title: "노닥노닥 3",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/3.png",
+      likes: 2200,
+      liked: true,
+    },
+    {
+      id: 10,
+      title: "노닥노닥 4",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/4.png",
+      likes: 3400,
+      bookmarked: true,
+    },
+    {
+      id: 11,
+      title: "노닥노닥 5",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/5.png",
+      likes: 1250,
+      liked: true,
+    },
+    {
+      id: 12,
+      title: "노닥노닥 6",
+      description:
+        "노닥노닥은 지친 일상을 주변 사람들과 함께 즐거움을 찾는 네트워크 서비스입니다.",
+      imageUrl: "/assets/imgs/test/6.png",
+      likes: 970,
+      liked: true,
+    },  
+  ]);
+
+  // 마지막 create 카드를 포함한 카드의 갯수
+  const totalOwnItems = ownPortfolios.length + 1;
 
   const [user, setUser] = useState({
-    username: "userName", 
+    username: "userName",
     email: "userName@gmail.com",
     name: "유저",
     affiliation: "학생",
@@ -20,16 +130,14 @@ const MyPage = () => {
     stacks: ["HTML", "Figma", "JavaScript"],
   });
 
-  // 백엔드 연결
   useEffect(() => {
+    // API 호출
   }, []);
 
   return (
     <div className="myp-container">
+      <div className="myp-hero" />
 
-      <div className="myp-hero">
-      </div>
-      {/* 메인 컨텐츠 */}
       <main className="myp-main">
         {/* 프로필 요약 */}
         <div className="myp-profile-summary">
@@ -38,7 +146,6 @@ const MyPage = () => {
             <div className="myp-username">{user.username}</div>
             <div className="myp-useremail">{user.email}</div>
           </div>
-
           <button className="myp-edit-btn" onClick={() => navigate("edit")}>
             프로필 편집
           </button>
@@ -47,70 +154,68 @@ const MyPage = () => {
         {/* 상세 정보 */}
         <div className="myp-details">
           <div className="myp-details-col">
-            <div className="myp-detail-row">
-              <div className="myp-label">이름</div>
-              <div className="myp-value">{user.name}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">소속</div>
-              <div className="myp-value">{user.affiliation}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">분야</div>
-              <div className="myp-value">{user.field}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">생년월일</div>
-              <div className="myp-value">{user.birthdate}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">보유 스택</div>
-              <div className="myp-value">
-                {user.stacks.map((s) => (
-                  <div key={s} className="myp-stack">{s}</div>
-                ))}
+            {[
+              { label: "이름", value: user.name },
+              { label: "소속", value: user.affiliation },
+              { label: "분야", value: user.field },
+              { label: "생년월일", value: user.birthdate },
+              {
+                label: "보유 스택",
+                value: user.stacks.map((s) => (
+                  <div key={s} className="myp-stack">
+                    {s}
+                  </div>
+                )),
+              },
+            ].map((row) => (
+              <div key={row.label} className="myp-detail-row">
+                <div className="myp-label">{row.label}</div>
+                <div className="myp-value">{row.value}</div>
               </div>
-            </div>
+            ))}
           </div>
           <div className="myp-details-col">
-            <div className="myp-detail-row">
-              <div className="myp-label">나이</div>
-              <div className="myp-value">{user.age}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">전화번호</div>
-              <div className="myp-value">{user.phone}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">Github</div>
-              <div className="myp-value">{user.github}</div>
-            </div>
-            <div className="myp-detail-row">
-              <div className="myp-label">이메일</div>
-              <div className="myp-value">{user.email}</div>
-            </div>
+            {[
+              { label: "나이", value: user.age },
+              { label: "전화번호", value: user.phone },
+              { label: "Github", value: user.github },
+              { label: "이메일", value: user.email },
+            ].map((row) => (
+              <div key={row.label} className="myp-detail-row">
+                <div className="myp-label">{row.label}</div>
+                <div className="myp-value">{row.value}</div>
+              </div>
+            ))}
           </div>
         </div>
-        
-        <div className="myp-portfolio-list">
-          {Array.from({ length: totalItems }).map((_, idx) => {
-            const isCreate = idx === totalItems - 1;
 
-            return isCreate ? (
-              <div
-                key="create"
-                className="myp-portfolio__item myp-portfolio__item--create"
-                onClick={() => navigate("/create")}
-              >
-                +
-              </div>
-            ) : (
-              <div key={idx} className="myp-portfolio__item">
-                {/* 나중에 실제 포트폴리오 카드 컴포넌트로 교체 */}
-              </div>
-            );
-          })}
-        </div>
+        {/* 내 포트폴리오 */}
+        <section className="myp-portfolio-section">
+          <h2 className="myp-portfolio-title">내 포트폴리오</h2>
+          <div className="myp-portfolio-list">
+            {Array.from({ length: totalOwnItems }).map((_, idx) => {
+              const isCreate = idx === totalOwnItems - 1; // 마지막 인지 체크
+              return (
+                <PortfolioCard
+                  key={isCreate ? "create" : ownPortfolios[idx].id}
+                  isCreate={isCreate}
+                  item={isCreate ? null : ownPortfolios[idx]}
+                  navigate={() => navigate("/create")}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* 좋아요/북마크 포트폴리오 */}
+        <section className="myp-portfolio-section">
+          <h2 className="myp-portfolio-title">좋아요/북마크 포트폴리오</h2>
+          <div className="myp-portfolio-list">
+            {likedPortfolios.map((item) => (
+              <PortfolioCard key={item.id} isCreate={false} item={item} />
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
