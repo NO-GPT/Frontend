@@ -1,15 +1,16 @@
+@import "../base/_fonts.css";
+
 .header {
  display: flex;
  align-items: center;
  justify-content: space-between;
- padding: 20px 25px 22px 25px;
+ padding: 20px 20px 22px 20px;
+ border-bottom: 1px solid #ccc;
  font-family: 'Paperlogy-7Bold', sans-serif;
- box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
- z-index: 1;
 }
 
-.logo {
- font-size: 18px;
+.logo span {
+ font-size: 22px;
  font-weight: bold;
 }
 
@@ -20,17 +21,18 @@
 }
 
 .nav-item {
- font-size: 13px;
+ font-size: 15px;
  text-decoration: none;
  color: inherit;
 }
 
 .nav-item-bold {
- font-weight: bold; 
+ font-weight: bold;
 }
 
 .nav-right {
  display: flex;
  gap: 20px;
  align-items: center;
+ font-family: 'Paperlogy-5Medium', sans-serif;
 }
