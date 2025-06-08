@@ -1,5 +1,8 @@
 @import "./styles/_global.css";
 
-@import "./styles/Page/LoginPage.css";
+@import "./styles/Page/MyPage.css";
+@import "./styles/Page/EditMyPage.css";
 
 @import "./styles/Components/Header.css";
+
+@import "./styles//base/_fonts.css";

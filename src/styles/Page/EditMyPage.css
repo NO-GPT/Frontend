@@ -1,0 +1,194 @@
+.edp-container {
+  font-family: sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+.edp-hero {
+  background-color: #e0e0e0;
+  height: 320px;
+}
+
+.edp-main {
+  max-width: 800px;
+  margin: 40px 23%;
+  box-sizing: border-box;
+}
+
+/* 프로필 요약 */
+.edp-profile-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.edp-profile-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.edp-userinfo {
+  flex: 1;
+  margin: 0 16px;
+}
+
+.edp-username {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.edp-useremail {
+  font-size: 14px;
+  color: #787878;
+}
+
+.edp-cancel-btn {
+  padding: 8px 16px;
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 상세 정보 그리드 */
+.edp-details {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.edp-details-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edp-details-col label {
+  display: block;
+  margin-bottom: 4px;
+  color: #999999;
+  font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Paperlogy-1Thin', sans-serif;
+}
+
+/* 인풋 공통 */
+.edp-input {
+  width: 100%;
+  height: 42px;
+  padding: 10px;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 나이 */
+.edp-age-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.edp-age-input {
+  padding: 10px 30px 10px 10px;
+}
+
+.edp-age-unit-inside {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #333;
+  pointer-events: none;
+}
+
+/* 스택 입력 */
+.edp-stacks-input {
+  width:100%;
+  height: 42px;
+  display: flex;
+  gap: 8px;
+}
+
+.edp-stack-add-btn {
+  margin-top: 21px;
+  width: 70px;
+  height: 42px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff9f1c;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.pcp-stack-input {
+  flex: 1;
+}
+
+/* 스택 뱃지 리스트 */
+.edp-stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edp-stack-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+}
+
+.edp-remove-stack-btn {
+  margin-left: 6px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #999;
+}
+
+
+/* 변경 안내 바 */ 
+.edp-save-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  width: 800px;
+  max-width: 100%;
+  margin-top: 80px;
+  box-sizing: border-box;
+}
+
+.edp-save-text {
+  font-size: 14px;
+  color: #555;
+}
+
+.edp-save-btn {
+  padding: 8px 16px;
+  background-color: #ff9f1c;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
