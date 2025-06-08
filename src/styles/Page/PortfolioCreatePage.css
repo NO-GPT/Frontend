@@ -1,0 +1,171 @@
+.pcp-container * {
+  font-size: 14px;
+}   
+
+/* 페이지 해더 */
+.pcp-hero {
+  background-color: #f2f2f2;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pcp-image-uploader {
+  width: 160px;
+  height: 120px;
+}
+
+.pcp-remove-image-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.pcp-remove-image-btn {
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+/* 입력폼 */
+.pcp-form {
+  margin: 80px 22%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 공용css */
+.pcp-group-row {
+  display: flex;
+  gap: 16px;
+}
+
+.pcp-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pcp-label {
+  color: #999999;
+  font-family: 'Paperlogy-1Thin', sans-serif;
+  font-weight: bold;
+}
+
+.pcp-input {
+  height: 22px;
+  padding: 10px;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  color: #333;
+}
+
+.pcp-btn {
+  width: 100px;
+  background: #FF9B30;
+  color: #FFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 스택 */
+.pcp-stack-input-area {
+  display: flex;
+  gap: 8px;
+}
+
+.pcp-stack-input {
+  width: 80%;
+}
+
+.pcp-stack-list {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pcp-stack-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+}
+
+.pcp-remove-stack-btn {
+  margin-left: 6px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #999;
+}
+
+/* 담당역할 */
+
+.pcp-select {
+  width: 100%;
+  height: 45.3px;
+  padding: 10px;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+/* 상세내용 */
+.pcp-detail-input {
+  height: 400px;
+  padding: 10px;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  resize: inherit;
+}
+
+/* PDF 업로드 */
+.pcp-pdf-input-area {
+  display: flex;
+  gap: 8px;
+}
+
+.pcp-pdf-input {
+  width: 60%;
+}
+
+/* 등록 버튼 */
+.pcp-submit-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.pcp-submit-btn {
+  width: 120px;
+  height: 46px;
+  background: #FF9B30;
+  color: #FFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
